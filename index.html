@@ -8,22 +8,15 @@
 </head>
 <body>
     <script>
-        const min = 1;
-        const max = 3;
-        let playerWins = 0;
-        let computerWins = 0;
-        let ties = 0;
-        let roundWin = false;
-        let roundLoss = false;
 
         function getChoice(min, max){ 
-            //Gets random number between 1 and 3 
+            //Gets random number between 1 and 3  ++
             let result = Math.floor(Math.random() * (max - min + 1) + min);
             return result; 
         }
 
         function computerPlay(){
-            //Randomly returns 'rock', 'paper', or 'scissors' 
+            //Randomly returns 'rock', 'paper', or 'scissors'  ++
             let choice = getChoice(min, max);
             let compChoice;
             if (choice == 1){
@@ -66,6 +59,7 @@
                 return;
                 // computerWins += 1;
             }
+
         }
 
         function getScore(roundWin = false, roundLoss = false){
@@ -97,21 +91,41 @@
             }     
         }
 
+        function restartScore(){
+            //resets scoreboard after each run
+            playerWins = 0;
+            computerWins = 0;
+            ties = 0;
+
+        }
+
         function game(rounds = 5){
             //Plays a 5 round game of rock paper scissors
+            //Displays scoreboard after round
+            restartScore();
             for (i = 0; i < rounds; i++){
-                let playerSelection = computerPlay();
                 let computerSelection = computerPlay();
                 playRound(playerSelection, computerSelection);
             }
-            return;          
+            console.log("Here is the score: ");
+            displayScore(playerWins, computerWins, ties);       
         }
-        // let computerSelection;
-        game();
-        console.log("Here is the score: ");
-        displayScore(playerWins, computerWins, ties);
+        
+        
+        //values for choosing between R,P or S
+        const min = 1;
+        const max = 3;
 
-        //Ties may not be tallied correctly 
+        let playerWins = 0;
+        let computerWins = 0;
+        let ties = 0;
+
+        //bool values to determine win or loss
+        let roundWin = false;
+        let roundLoss = false;
+        let playerSelection = 'rock';
+
+        game();
 
         
     </script>
