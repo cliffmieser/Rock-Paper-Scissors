@@ -7,17 +7,37 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <main>
+        <button class="rock-btn playerSelect-btn">Rock</button>
+        <button class="paper-btn playerSelect-btn">Paper</button>
+        <button class="scissors-btn playerSelect-btn">Scissors</button>
+
+    </main>
+
+
+
     <script>
 
-        function getChoice(min, max){ 
+        function getPlayerChoice(){ 
             //Gets random number between 1 and 3  ++
-            let result = Math.floor(Math.random() * (max - min + 1) + min);
-            return result; 
-        }
+/*             let result = Math.floor(Math.random() * (max - min + 1) + min);
+            return result;  */
+            
+            let playerChoice;
+            let choice = prompt("Choose a number between 1 and 3: ", "");
+            if (choice == 1){
+                return playerChoice = 'rock';
+            } else if (choice == 2){
+                return playerChoice = 'paper';
+            } else if (choice == 3){
+                return playerChoice = 'scissors';
+            }
+        } 
 
         function computerPlay(){
             //Randomly returns 'rock', 'paper', or 'scissors'  ++
-            let choice = getChoice(min, max);
+            /* let choice = getChoice(min, max); */
+            let choice = Math.floor(Math.random() * (max - min + 1) + min);
             let compChoice;
             if (choice == 1){
                 return compChoice = 'rock';
@@ -99,18 +119,26 @@
 
         }
 
-        function game(rounds = 5){
+        function game(rounds = 1){
             //Plays a 5 round game of rock paper scissors
             //Displays scoreboard after round
-            restartScore();
-            for (i = 0; i < rounds; i++){
-                let computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-            }
-            console.log("Here is the score: ");
-            displayScore(playerWins, computerWins, ties);       
+          restartScore();
+          for (i = 0; i < rounds; i++){
+          	playerSelection = getPlayerChoice();
+            let computerSelection = computerPlay();
+            playRound(playerSelection, computerSelection);      	
+          }
+          console.log("Here is the score: ");
+          displayScore(playerWins, computerWins, ties);              		           
+
         }
+
         
+        const btn = document.querySelector(".rock-btn");
+        btn.addEventListener('click', () => {
+            alert(playerSelection);
+        });
+
         
         //values for choosing between R,P or S
         const min = 1;
@@ -123,7 +151,11 @@
         //bool values to determine win or loss
         let roundWin = false;
         let roundLoss = false;
-        let playerSelection = 'rock';
+        
+        let playerSelection;//ask for player selection 
+        
+        //for automated playing
+       //let playerSelection = Math.floor(Math.random() * (max - min + 1) + min);  
 
         game();
 
