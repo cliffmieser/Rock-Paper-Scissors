@@ -7,6 +7,15 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <main>
+        <button class="rock-btn playerSelect-btn">Rock</button>
+        <button class="paper-btn playerSelect-btn">Paper</button>
+        <button class="scissors-btn playerSelect-btn">Scissors</button>
+
+    </main>
+
+
+
     <script>
 
         function getPlayerChoice(){ 
@@ -110,7 +119,7 @@
 
         }
 
-        function game(rounds = 5){
+        function game(rounds = 1){
             //Plays a 5 round game of rock paper scissors
             //Displays scoreboard after round
           restartScore();
@@ -123,7 +132,13 @@
           displayScore(playerWins, computerWins, ties);              		           
 
         }
+
         
+        const btn = document.querySelector(".rock-btn");
+        btn.addEventListener('click', () => {
+            alert(playerSelection);
+        });
+
         
         //values for choosing between R,P or S
         const min = 1;
