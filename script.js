@@ -5,61 +5,117 @@ const max = 3;
 let playerWins = 0;
 let computerWins = 0;
 let ties = 0;
+let rounds = 0;
 
 //bool values to determine win or loss
 let roundWin = false;
 let roundLoss = false;
 
-let playerSelection;//ask for player selection 
+
+let computerSelection;
+let playerSelection;
 
 const rockBtn = document.querySelector(".rock-btn");
 const paperBtn = document.querySelector(".paper-btn");
 const scissorsBtn = document.querySelector(".scissors-btn");
 const outcomeDiv = document.querySelector('.outcome');
+const scoreDiv = document.querySelector(".scoreDiv");
 
 
 //for automated playing
 //let playerSelection = Math.floor(Math.random() * (max - min + 1) + min);  
 
-// game();
-
-// function game(rounds = 1){
-//     //Plays a 5 round game of rock paper scissors
-//     //Displays scoreboard after round
-//   restartScore();
-//   console.log("Game Start:")
-//   for (i = 0; i < rounds; i++){
-//     playerSelection = getPlayerChoice();
-//     let computerSelection = computerPlay();
-//     playRound(playerSelection, computerSelection);      	
-//   }
-//   console.log("Here is the score: ");
-//   displayScore(playerWins, computerWins, ties);              		           
-
-// }
-
 //resets the scoreboard
-restartScore();
-
 
 
 rockBtn.addEventListener('click', () => {
-    const computerSelection = computerPlay();
-    const playerSelection = 'rock';
+    computerSelection = computerPlay();
+    playerSelection = 'rock';
     playRound(playerSelection, computerSelection);
+    rounds++;
 });
 
 paperBtn.addEventListener('click', () => {
-    const computerSelection = computerPlay();
-    const playerSelection = 'paper';
+    computerSelection = computerPlay();
+    playerSelection = 'paper';
     playRound(playerSelection, computerSelection);
+    rounds++;
 });
 
 scissorsBtn.addEventListener('click', () => {
-    const computerSelection = computerPlay();
-    const playerSelection = 'scissors';
+    computerSelection = computerPlay();
+    playerSelection = 'scissors';
     playRound(playerSelection, computerSelection);
+    rounds++;
 });
+
+console.log("Game Start:")
+restartScore();
+game();
+
+if (rounds == 5){
+    displayScore(playerWins, computerWins, ties);
+}
+   
+function game(rounds = 0){
+    //Plays a 5 round game of rock paper scissors
+    //Displays scoreboard after round
+
+           
+}
+
+
+// rockBtn.addEventListener('click', () => {
+//     const computerSelection = computerPlay();
+//     const playerSelection = 'rock';
+//     playRound(playerSelection, computerSelection);
+//     rounds++;
+// });
+
+// paperBtn.addEventListener('click', () => {
+//     const computerSelection = computerPlay();
+//     const playerSelection = 'paper';
+//     playRound(playerSelection, computerSelection);
+//     rounds++;
+// });
+
+// scissorsBtn.addEventListener('click', () => {
+//     const computerSelection = computerPlay();
+//     const playerSelection = 'scissors';
+//     playRound(playerSelection, computerSelection);
+//     rounds++;
+// });
+
+
+
+function displayScore(playerWins, computerWins, ties){
+    //Displays score and winner and loser of game
+    const playerWinTxt = document.createElement('p');
+    const computerWinsTxt = document.createElement('p');
+    const tiesTxt = document.createElement('p');
+    const p = document.createElement('p');
+
+
+    p.innerText = "Here is the score: ";
+    scoreDiv.appendChild(p);
+
+    playerWinTxt.innerText = `\nPlayer wins: ${playerWins}`;
+    scoreDiv.appendChild(playerWinTxt);
+
+    computerWinsTxt.innerText = `Computer wins: ${computerWins}`;
+    scoreDiv.appendChild(computerWinsTxt);
+
+    tiesTxt.innerText = `ties: ${ties}\n`;
+    scoreDiv.appendChild(tiesTxt);
+
+    if (playerWins > computerWins){
+        console.log(`\n\nPlayer, you are the winner!`);
+    } else if (playerWins < computerWins){
+        console.log(`\n\nComputer, you are the winner!\nSorry player, you lost.`);
+    } else if (playerWins == computerWins){
+        console.log(`\n\nTied game! No winner.`);
+    }     
+}
 
 
 function playRound(playerSelection, computerSelection){
@@ -140,26 +196,13 @@ function getScore(roundWin = false, roundLoss = false){
     }
 }
 
-function displayScore(playerWins, computerWins, ties){
-    //Displays score and winner and loser of game
-    console.log(`\nPlayer wins: ${playerWins}`);
-    console.log(`Computer wins: ${computerWins}`);
-    console.log(`ties: ${ties}\n`);
-
-    if (playerWins > computerWins){
-        console.log(`\n\nPlayer, you are the winner!`);
-    } else if (playerWins < computerWins){
-        console.log(`\n\nComputer, you are the winner!\nSorry player, you lost.`);
-    } else if (playerWins == computerWins){
-        console.log(`\n\nTied game! No winner.`);
-    }     
-}
 
 function restartScore(){
     //resets scoreboard after each run
     playerWins = 0;
     computerWins = 0;
     ties = 0;
+    rounds = 0;
 
 }
 
