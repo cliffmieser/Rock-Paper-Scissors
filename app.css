@@ -19,3 +19,11 @@ p{
     font-size: 12px;
     color: red;
 }
+
+.outcome{
+    display: flex;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+    margin: auto 0;
+} 
