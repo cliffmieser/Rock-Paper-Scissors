@@ -28,63 +28,50 @@ const scoreDiv = document.querySelector(".scoreDiv");
 //resets the scoreboard
 
 
-rockBtn.addEventListener('click', () => {
-    computerSelection = computerPlay();
-    playerSelection = 'rock';
-    playRound(playerSelection, computerSelection);
-    rounds++;
-});
-
-paperBtn.addEventListener('click', () => {
-    computerSelection = computerPlay();
-    playerSelection = 'paper';
-    playRound(playerSelection, computerSelection);
-    rounds++;
-});
-
-scissorsBtn.addEventListener('click', () => {
-    computerSelection = computerPlay();
-    playerSelection = 'scissors';
-    playRound(playerSelection, computerSelection);
-    rounds++;
-});
 
 console.log("Game Start:")
 restartScore();
 game();
 
-if (rounds == 5){
-    displayScore(playerWins, computerWins, ties);
-}
    
-function game(rounds = 0){
+function game(){
     //Plays a 5 round game of rock paper scissors
-    //Displays scoreboard after round
-
+    //Displays scoreboard after round = 5
+    rockBtn.addEventListener('click', () => {
+        computerSelection = computerPlay();
+        playerSelection = 'rock';
+        playRound(playerSelection, computerSelection);
+        rounds++;
+        checkRound();
+    });
+    
+    paperBtn.addEventListener('click', () => {
+        computerSelection = computerPlay();
+        playerSelection = 'paper';
+        playRound(playerSelection, computerSelection);
+        rounds++;
+        checkRound();
+    });
+    
+    scissorsBtn.addEventListener('click', () => {
+        computerSelection = computerPlay();
+        playerSelection = 'scissors';
+        playRound(playerSelection, computerSelection);
+        rounds++;
+        checkRound();
+    });
+    
            
 }
 
-
-// rockBtn.addEventListener('click', () => {
-//     const computerSelection = computerPlay();
-//     const playerSelection = 'rock';
-//     playRound(playerSelection, computerSelection);
-//     rounds++;
-// });
-
-// paperBtn.addEventListener('click', () => {
-//     const computerSelection = computerPlay();
-//     const playerSelection = 'paper';
-//     playRound(playerSelection, computerSelection);
-//     rounds++;
-// });
-
-// scissorsBtn.addEventListener('click', () => {
-//     const computerSelection = computerPlay();
-//     const playerSelection = 'scissors';
-//     playRound(playerSelection, computerSelection);
-//     rounds++;
-// });
+function checkRound(){
+    //checks if round == 5
+    //if so, display score
+    //else return
+    if (rounds == 5){
+        displayScore(playerWins, computerWins, ties);
+    } else return;
+}
 
 
 
