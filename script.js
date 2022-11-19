@@ -63,7 +63,6 @@ scissorsBtn.addEventListener('click', () => {
 
 
 function playRound(playerSelection, computerSelection){
-    console.log('round has started');
     //Plays a round of Rock Paper Scissors
     //shows string of results of round
     // playerSelection = playerSelection.toLowerCase();
@@ -72,32 +71,27 @@ function playRound(playerSelection, computerSelection){
         getScore(roundWin = false, roundLoss = false);
         p.innerText = `It's a tie! You both picked ${playerSelection}`;
         outcomeDiv.appendChild(p);
-        // ties += 1;
     } else if (playerSelection == 'rock' && computerSelection == 'scissors'){
         getScore(roundWin = true, roundLoss = false);
         const p = document.createElement('p');
         p.innerText = `You win! ${playerSelection} beats ${computerSelection}`;
         outcomeDiv.appendChild(p);
-        // playerWins += 1;
         
     } else if (playerSelection == 'paper' && computerSelection == 'rock'){
         getScore(roundWin = true, roundLoss = false);
         const p = document.createElement('p');
         p.innerText = `You win! ${playerSelection} beats ${computerSelection}`;
         outcomeDiv.appendChild(p);
-        // playerWins += 1;
     } else if (playerSelection == 'scissors' && computerSelection == 'paper'){
         getScore(roundWin = true, roundLoss = false);
         const p = document.createElement('p');
         p.innerText = `You win! ${playerSelection} beats ${computerSelection}`;
         outcomeDiv.appendChild(p);
-        // playerWins += 1;
     } else {
         getScore(roundWin = false, roundLoss = true);
         const p = document.createElement('p');
         p.innerText = `You lose! ${computerSelection} beats ${playerSelection}`;
         outcomeDiv.appendChild(p);
-        // computerWins += 1;
     }
 }
 
